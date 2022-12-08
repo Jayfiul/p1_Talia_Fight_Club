@@ -57,8 +57,28 @@ yushaA -- 2022-12-07 23:15
 Created a working app that runs an HTML template.
 Added all the HTML files that we will be using in this project.
 ==============================================================
+
 taliaH -- 2022-12-08 9:20
 --------------------------------------------------------------
 Built in html templates with code structure for all pages.
 reviewed app and began linking pages.
+==============================================================
+
+yushaA -- 2022-12-08 9:22
+--------------------------------------------------------------
+Worked on __init__.py
+Researched on pokeAPI
+Attempted to implement pokeAPI in __init__.api
+==============================================================
+
+anthonyS -- 2022-12-08 9:24
+--------------------------------------------------------------
+Researched on riotAPI
+Solved the challenges that we previously faced with the API
+==============================================================
+
+williamV -- 20022-12-08 9:26
+--------------------------------------------------------------
+Researched on kitsuAPI.
+Reviewed sqlite database doccumentation.
 ==============================================================
