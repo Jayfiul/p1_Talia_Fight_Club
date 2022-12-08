@@ -45,9 +45,15 @@ Revised the design doc.
 Reserached on the API's to make sure that they work.
 ==============================================================
 
-yushaA -- 2022-12-07 23:58
+yushaA -- 2022-12-07 22:58
 --------------------------------------------------------------
 Created requirements.txt and filled in the required packages.
 Wrote the summary and pitch on the readme.
 Put the launch codes in place.
+==============================================================
+
+yushaA -- 2022-12-07 23:15
+--------------------------------------------------------------
+Created a working app that runs an HTML template.
+Added all the HTML files that we will be using in this project.
 ==============================================================
