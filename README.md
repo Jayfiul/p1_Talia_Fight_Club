@@ -1,8 +1,8 @@
 # Talia Fight Club(Sponsored By Yusha)
 ## Yusha Aziz: Project Manager, Character Organization, Backend
-## Talia Hsia: Frontend, HTML
+## Talia Hsia: Frontend, HTML, Bootstrap CSS
 ## Anthony Sun: Databse, cleanup
-## William Vongphanith: API response parsing, backend
+## William Vongphanith: API response parsing, backend, custom CSS
 
 
 This project aims to create a website where the user is able to find a partner match from any of the 4 available fandoms (Pokémon, League of Legends, Valorant, and Anime). This matching is done through a short personality quiz and the top results from that quiz will be filtered through a love calculator and the top compatibility will be returned as a match. Users will be able to see data on their returned match and past matches from when they have previously taken the quiz.
