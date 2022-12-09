@@ -1,0 +1,17 @@
+.idea
+.venv
+.vscode
+
+# PyCharm
+.pytest_cache
+
+.pyc
+.coverage
+.coverage.*
+
+.cython
+
+# Sphinx
+docs/_build
+
+.db

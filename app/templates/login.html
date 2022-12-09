@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <title> LOGIN PAGE </title>
-  </head>
+</head>
 
-  <body>
-    <h1>
-      Welcome, Devo whatchu u doing here
-    </h1>
+<body>
+<h1>
+    Welcome, Devo whatchu u doing here
+</h1>
 
 
-    <h3>
-      login COMING SOON to theaters near you.
-    </h3>    
-    <br>
+<h3>
+    login COMING SOON to theaters near you.
+</h3>
+<br>
 
-    <div>
-      <h2 id = "loghead">
+<div>
+    <h2 id="loghead">
         LOGIN HERE
-      </h2>
-      <h3>
+    </h2>
+    <h3>
         Username:
-      </h3>
-      <form action="/login" method = "POST" class = "form">
-        <input type="text" name="usernameLog">
-      <br>
-      <h3>
-        Password:
-      </h3>
-        <input type="text" name="passwordLog">
-      <br>
-      <br>
-        <input type="submit" name="sub1" value="Login" id class = "button">
-      <h2>
-        Don't have an account???
-      </h2>
-        <button type="button" class = "button"><a href="/register">REGISTER</a></button>
-      </form>
-      <br>
-      <div id = "logmsg">
-        {{loginMSG}}
-      </div>
+    </h3>
+    <form action="/login" method="POST" class="form">
+        <input type="text" name="username">
+        <br>
+        <h3>
+            Password:
+        </h3>
+        <input type="text" name="password">
+        <br>
+        <br>
+        <input type="submit" name="sub1" value="Login" id class="button">
+        <h2>
+            Don't have an account???
+        </h2>
+        <button type="button" class="button"><a href="/register">REGISTER</a></button>
+    </form>
+    <br>
+    <div id="logmsg">
+        {{ loginMSG }}
     </div>
-    
-  </body>
+</div>
+
+</body>
 </html>

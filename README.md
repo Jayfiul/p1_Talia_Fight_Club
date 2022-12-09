@@ -1,7 +1,7 @@
-# Talia Fight Club(Sponsored By Yusha)
+# Talia Fight Club (Sponsored By Yusha)
 ## Yusha Aziz: Project Manager, Character Organization, Backend
 ## Talia Hsia: Frontend, HTML, Bootstrap CSS
-## Anthony Sun: Databse, cleanup
+## Anthony Sun: Database, cleanup
 ## William Vongphanith: API response parsing, backend, custom CSS
 
 
@@ -13,7 +13,10 @@ This project aims to create a website where the user is able to find a partner m
 - https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_riotAPI.md
 - https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_LoveCalculator.md
 
-
 ### Launch Codes
-- There is no instalation required, all you have to do is clone this repository and install the required packages in `requirements.txt`.
-- In order to run this website, you only have to run this command: `python3 __init.py__` and open any browser of your choice, and run your local host (http://127.0.0.1:5000/)
+1. Clone the repo (or download the zip)
+2. Open the terminal and cd into the directory
+3. Install the dependencies with `pip install -r requirements.txt` (or manually install them with `pip install flask flask_session requests fuckit`)
+4. Run the app with `python app.py` (or `python3 app.py` if you have both python2 and python3 installed)
+5. Open your browser and go to `localhost:5000` (or your network's IP address on port 5000)
+6. Enjoy!

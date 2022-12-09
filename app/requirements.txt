@@ -1,0 +1,3 @@
+Flask==2.2.2
+# Actually version ה.ג.א but this is the closest I can get
+fuckit==4.8.1
