@@ -87,7 +87,8 @@ def register():
         user.insert(db, username, password)
 
         # Redirect the user to the login page
-        return redirect(url_for('landing'))
+        session['username'] = username
+        return redirect(url_for('home'))
 
     # If it's a GET request, the user is trying to view the sign up page
     return render_template('register.html')
@@ -128,6 +129,11 @@ def login():
     # If it's a GET request, the user is trying to view the login page
     return render_template('login.html')
 
+
+@app.route("/test", methods=['GET', 'POST'])
+#load test page with questions
+def test():
+    return render_template('test.html')
 
 @app.route("/logout", methods=['GET', 'POST'])
 @login_required(db=db)

@@ -91,3 +91,16 @@ Formatted most files with auto-pep8.
 Middleware to check if user is logged in.
 Docs and hacks (read docs folder)
 Updated devlog
+==============================================================
+
+taliaH-- 2022-12-09 9:10
+--------------------------------------------------------------
+fixed bug with register page redirect to home page
+changed register so upon creating account auto login
+==============================================================
+
+taliaH-- 2022-12-09 9:26
+--------------------------------------------------------------
+added direct button to tester page
+make test page route
+==============================================================
