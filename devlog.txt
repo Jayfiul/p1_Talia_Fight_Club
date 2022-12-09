@@ -77,8 +77,17 @@ Researched on riotAPI
 Solved the challenges that we previously faced with the API
 ==============================================================
 
-williamV -- 20022-12-08 9:26
+williamV -- 2022-12-08 9:26
 --------------------------------------------------------------
 Researched on kitsuAPI.
 Reviewed sqlite database doccumentation.
 ==============================================================
+
+williamV -- 2022-12-08 23:52
+--------------------------------------------------------------
+Created the database functions, seed file, and database.
+Finished login/logout/register routes and templates.
+Formatted most files with auto-pep8.
+Middleware to check if user is logged in.
+Docs and hacks (read docs folder)
+Updated devlog
