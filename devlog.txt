@@ -104,3 +104,16 @@ bridge)
 Accidentally force pushed to master in a fit of rage
 ==============================================================
 
+taliaH-- 2022-12-12 9:00
+--------------------------------------------------------------
+fixed merge conflicts and edited app routes
+==============================================================
+
+taliaH-- 2022-12-12 9:24
+--------------------------------------------------------------
+added 2 new routes for result and test and registered them in __init__.py
+researched splitting up routes into multiple files and registration
+edited html templates to move freely between routes
+built in user session verification for pages
+==============================================================
+
