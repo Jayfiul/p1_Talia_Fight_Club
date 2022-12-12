@@ -1,35 +1,25 @@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-USAGE:
-* Replace all fields, angle brackets included, with specified info.
-  eg, pd <pd#> --> pd 3
-* Delete these instructions once all teammates understand usage.
-  (from tilde bar above to tilde bar below)
-* rename this file devlog.txt
-
-devlog--
-Use keyboard shortcut to jump to end,
- replicate entry template, (Ctrl-Shift up x5, Ctrl-X, Ctrl-V x2)
- modify appropriately.
-Each entry should begin with the following format:
- firstL -- TIMESTAMP\n
-e.g.: 
-clydeS -- 2999-12-31 23:59
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Talia Fight Club(Sponsored by Yusha)
-Yusha Aziz
-Talia Hsia
-Anthony Sun 
-William Vongphanith
+Talia Fight Club (Sponsored by Yusha)
+- Yusha Aziz
+- Talia Hsia
+- Anthony Sun
+- William Vongphanith
 pd 2
 ---------------------
- ______   ______   __   __   __       ______   _______     
-/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
-\\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
-  \:\ \ \ \\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
- \:\ \ \ \\:::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
-   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
-    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+  ____________________________________________________________________
+ /\                                                                   \
+ \_|                                                                  |
+   |          ▄▄                      ▄▄▄▄                            |
+   |          ██                      ▀▀██                            |
+   |     ▄███▄██   ▄████▄   ██▄  ▄██    ██       ▄████▄    ▄███▄██    |
+   |    ██▀  ▀██  ██▄▄▄▄██   ██  ██     ██      ██▀  ▀██  ██▀  ▀██    |
+   |    ██    ██  ██▀▀▀▀▀▀   ▀█▄▄█▀     ██      ██    ██  ██    ██    |
+   |    ▀██▄▄███  ▀██▄▄▄▄█    ████      ██▄▄▄   ▀██▄▄██▀  ▀██▄▄███    |
+   |      ▀▀▀ ▀▀    ▀▀▀▀▀      ▀▀        ▀▀▀▀     ▀▀▀▀     ▄▀▀▀ ██    |
+   |                                                       ▀████▀▀    |
+   |                                                                  |
+   |   _______________________________________________________________|_
+    \_/___________________________________________________________/
+
 ==============================================================
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -104,3 +94,13 @@ taliaH-- 2022-12-09 9:26
 added direct button to tester page
 make test page route
 ==============================================================
+
+williamV -- 2022-12-12 00:20
+--------------------------------------------------------------
+Refactored everything to take advantage of flask blueprints.
+Discovered that flask is not nearly as nice as node.js when
+passing data between files (tl;dr: it made me want to jump off a
+bridge)
+Accidentally force pushed to master in a fit of rage
+==============================================================
+

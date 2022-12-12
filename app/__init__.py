@@ -1,49 +1,37 @@
 # Hacks
-import fuckit
 # Actual imports
-from flask import Flask, request, redirect, url_for, session  # web server essentials
-from flask import render_template  # facilitate jinja templating
+from flask import Flask, request  # web server essentials
 
 from database import character  # character database operations
 from database import database  # main database class
 from database import question  # question database operations
 from database import user  # user database operations
-from middleware import login_required  # some functions to intercept requests and check if the user is logged in
+from routes.home import home_bp
+from routes.login import login_bp
+from routes.logout import logout_bp
+from routes.register import register_bp
+from utils import b64
 
-login_required = login_required.login_required
-
-from utils import data_validation  # data validation functions
-
-app = Flask(__name__)
+global db
 db = database.Database()
 
+app = Flask(__name__)
 
-# Set the secret key to some random bytes. Keep this really secret!
-def base64_encode(data):
-    # Write this function without the base64 module
-    converted = ""
-    for i in range(0, len(data), 3):
-        # Get the next 3 bytes
-        block = data[i:i + 3]
-
-        # Convert the block to a number
-        num = 0
-        for j in range(len(block)):
-            num += ord(block[j]) << (8 * (2 - j))
-
-        # Convert the number to 4 base64 characters
-        for j in range(4):
-            if i * 8 + j * 6 > len(data) * 8:
-                converted += "="
-            else:
-                converted += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"[
-                    num >> (6 * (3 - j)) & 0x3F]
-    return converted
+app.register_blueprint(home_bp)
+app.register_blueprint(login_bp)
+app.register_blueprint(logout_bp)
+app.register_blueprint(register_bp)
 
 
-app.secret_key = base64_encode(
+@app.before_request
+def before_request():
+    request.db = db
+
+
+app.secret_key = b64.base64_encode(
     "this is one hell of a secret key. it's really secure now that we encoded it into base64!")
 
+<<<<<<< HEAD
 
 @app.route("/")
 def home():
@@ -148,7 +136,12 @@ def logout(*args, **kwargs):
     return redirect(url_for('home'))
 
 
+=======
+>>>>>>> refs/remotes/origin/main
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified
     app.debug = True
-    app.run()
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+    )

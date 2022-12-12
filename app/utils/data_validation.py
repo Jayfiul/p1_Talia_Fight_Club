@@ -15,7 +15,7 @@ def validate_email(email: str) -> bool:
     return email_regex.match(email)
 
 
-def validate_username(username : str) -> bool:
+def validate_username(username: str) -> bool:
     """
     Validate username using a regex. Returns True if username is valid, False if not.
 
