@@ -73,4 +73,14 @@ Formatted most files with auto-pep8.
 Middleware to check if user is logged in.
 Docs and hacks (read docs folder)
 Updated devlog
+==============================================================
+
+williamV -- 2022-12-12 00:20
+--------------------------------------------------------------
+Refactored everything to take advantage of flask blueprints.
+Discovered that flask is not nearly as nice as node.js when
+passing data between files (tl;dr: it made me want to jump off a
+bridge)
+Accidentally force pushed to master in a fit of rage
+==============================================================
 
