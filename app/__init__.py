@@ -20,7 +20,7 @@ import requests
 global db
 db = database.Database()
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 app.register_blueprint(home_bp)
 app.register_blueprint(login_bp)
@@ -28,6 +28,7 @@ app.register_blueprint(logout_bp)
 app.register_blueprint(register_bp)
 app.register_blueprint(test_bp)
 app.register_blueprint(result_bp)
+
 
 
 @app.before_request
