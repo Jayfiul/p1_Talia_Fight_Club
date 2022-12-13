@@ -15,3 +15,8 @@
 docs/_build
 
 .db
+
+__pycache__/
+
+*.txt
+!devlog.txt

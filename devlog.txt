@@ -138,3 +138,9 @@ read through documentation for pokeAPI and love-calculator API
 found code inserts and verified that pokeapi has no key
 *note:inserts not put in yet because we have no calling mech*
 ==============================================================
+
+anthonyS -- 2022-12-13 8:56
+--------------------------------------------------------------
+update .gitignore
+research better anime api
+
