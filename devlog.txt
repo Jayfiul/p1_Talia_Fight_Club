@@ -131,7 +131,13 @@ Partials and template CSS work
 Navbar + header + site icon (AI generated)
 ==============================================================
 
-taliaH-- 2022-12-13 9:20
+anthonyS -- 2022-12-13 8:56
+--------------------------------------------------------------
+update .gitignore
+research better anime api
+==============================================================
+
+taliaH -- 2022-12-13 9:20
 --------------------------------------------------------------
 added api keys for love-calculator API
 read through documentation for pokeAPI and love-calculator API
@@ -139,8 +145,11 @@ found code inserts and verified that pokeapi has no key
 *note:inserts not put in yet because we have no calling mech*
 ==============================================================
 
-anthonyS -- 2022-12-13 8:56
+yushaA -- 2022-12-13 9:24
 --------------------------------------------------------------
-update .gitignore
-research better anime api
+figured out personality questions required for pokeAPI.
+added to the /doc files with markdown files explaining and how we are using riotAPI and pokeAPI
+learned how to create a loading mechanism in place and api storage. 
+==============================================================
+
 
