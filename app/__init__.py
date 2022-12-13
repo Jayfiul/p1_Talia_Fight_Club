@@ -46,7 +46,7 @@ response_API = requests.get('http://ddragon.leagueoflegends.com/cdn/12.23.1/data
 #print(response_API)
 
 info = response_API.text #pulls all the information from the api file and puts in this string variable
-print(info) #checks out the string of info
+#print(info) #checks out the string of info
 
 parse_json = json.loads(info) #puts the data into JSON format
 #will be important later #pictureURL = "http://ddragon.leagueoflegends.com/cdn/12.23.1/img/champion/" + parse_json['data']["Aatrox"]["image"]["full"] #stores the value associated with 'url' in the JSON to variable pictureURL
@@ -102,8 +102,44 @@ def League(champion):
     characteristics.append(weight(file["stats"]["armor"], file["stats"]["spellblock"]))
     characteristics.append(strength(file["stats"]["attackdamage"], file["stats"]["attackdamageperlevel"]))
     return characteristics #Name, Attributes, Weird/Normal, Big/Skinny, Kind/Strong
-print(League("Aatrox"))
+#print(League("Aatrox"))
 
+#=======================================================================================================================
+#poke API CODE
+#=======================================================================================================================
+
+def pokemon(name):
+    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
+    pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
+    poke_json = json.loads(pokeInfo)
+    pokemon = []
+    pokemon.append(poke_json["name"])
+    pokemon.append(color(name))
+    pokemon.append(shape(name))
+    pokemon.append(habitat(name))
+    return pokemon
+
+def color(name):
+    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
+    pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
+    poke_json = json.loads(pokeInfo)
+    return poke_json["color"]["name"]
+
+def shape(name):
+    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
+    pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
+    poke_json = json.loads(pokeInfo)
+    return poke_json["shape"]["name"]
+
+def habitat(name):
+    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
+    pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
+    poke_json = json.loads(pokeInfo)
+    return poke_json["habitat"]["name"]
+    
+
+print(pokemon("dratini"))
+    
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified
     app.debug = True
