@@ -117,3 +117,10 @@ edited html templates to move freely between routes
 built in user session verification for pages
 ==============================================================
 
+yushA-- 2022-12-12 21:15
+--------------------------------------------------------------
+researched on what parts of the riotAPI that I could use for the personality quiz.
+looked through the riotapi doccumentation to find how I could register pictres, found it!
+created all the necessary helper functions for obtaining the league characters data.
+created a main function that puts all of the info for a league character in an array ready to be put in a sqlite database.
+==============================================================
