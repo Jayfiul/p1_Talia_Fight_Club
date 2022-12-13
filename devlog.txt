@@ -130,3 +130,8 @@ williamV -- 2022-12-13 00:12
 Partials and template CSS work
 Navbar + header + site icon (AI generated)
 ==============================================================
+
+anthonyS -- 2022-12-13 8:56
+--------------------------------------------------------------
+update .gitignore
+research better anime api
