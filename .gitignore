@@ -20,3 +20,8 @@ __pycache__/
 
 *.txt
 !devlog.txt
+
+.pyc
+.pytest_cache
+.coverage
+.coverage.*

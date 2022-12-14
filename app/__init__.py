@@ -30,14 +30,18 @@ app.register_blueprint(test_bp)
 app.register_blueprint(result_bp)
 
 
+app.secret_key = b64.base64_encode(
+    "this is one hell of a secret key. it's really secure now that we encoded it into base64!")
+
 
 @app.before_request
 def before_request():
     request.db = db
-
-
-app.secret_key = b64.base64_encode(
-    "this is one hell of a secret key. it's really secure now that we encoded it into base64!")
+    # Try to get username from session
+    print(request.cookies)
+    # Parse session cookie
+    if 'username' in request.session:
+        request.is_logged_in = True
 
 #=======================================================================================================================
 #League of Legends API CODE

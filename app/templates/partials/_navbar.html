@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between flex-wrap bg-gray-100 p-6">
     <div class="flex items-center flex-shrink-0 mr-6">
-        <span class="font-semibold text-xl tracking-tight">Talia Fight Club</span>
+	<a href="/" class="font-semibold text-xl tracking-tight">Talia Fight Club</a>
     </div>
 
     <!-- Hamburger menu -->
@@ -20,20 +20,23 @@
     <!-- Actual list of links, make it so that when the user opens the menu, it slides down from top on mobile devices smoothly -->
     <div id="nav-list" class="w-full flex-grow lg:flex lg:items-center lg:w-auto overflow-hidden lg:overflow-visible duration-300">
         <div class="text-sm lg:flex-grow">
-            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black mr-4">
+            <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black mr-4">
                 Home
             </a>
-            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black mr-4">
-                About
+            <a href="/test" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black mr-4">
+                Test page 1
             </a>
-            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black">
+            <a href="/omnicode" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black">
                 Contact
             </a>
         </div>
         <div>
-            <a href="#"
-               class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0">Login</a>
-            </a>
+            {% if is_logged_in %}
+	    <a href="/logout" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Logout</a>
+	    {% else %}
+	    <a href="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</a>
+	    <a href="/register" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Register</a>
+	    {% endif %}
         </div>
     </div>
 
