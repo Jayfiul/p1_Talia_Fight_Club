@@ -152,4 +152,10 @@ added to the /doc files with markdown files explaining and how we are using riot
 learned how to create a loading mechanism in place and api storage. 
 ==============================================================
 
-
+yushaA -- 2022-12-13 21:00
+--------------------------------------------------------------
+researched on what parts of the pokeAPI that I could use for the personality quiz.
+looked through the riotapi doccumentation to find how I could register the pokemon TYPE, found it!
+created all the necessary helper functions for obtaining the pokemon characters data.
+created a main function that puts all of the info for a pokemon character in an array ready to be put in a sqlite database.
+==============================================================
