@@ -42,14 +42,14 @@ app.secret_key = b64.base64_encode(
 #=======================================================================================================================
 #League of Legends API CODE
 #=======================================================================================================================
-response_API = requests.get('http://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_US/champion.json') #api with all the champions in League Info
+riotAPI = requests.get('http://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_US/champion.json') #api with all the champions in League Info
 #print(response_API)
 
-info = response_API.text #pulls all the information from the api file and puts in this string variable
+riotInfo = riotAPI.text #pulls all the information from the api file and puts in this string variable
 #print(info) #checks out the string of info
 
-parse_json = json.loads(info) #puts the data into JSON format
-#will be important later #pictureURL = "http://ddragon.leagueoflegends.com/cdn/12.23.1/img/champion/" + parse_json['data']["Aatrox"]["image"]["full"] #stores the value associated with 'url' in the JSON to variable pictureURL
+riot_json = json.loads(riotInfo) #puts the data into JSON format
+#important for later ---> #pictureURL = "http://ddragon.leagueoflegends.com/cdn/12.23.1/img/champion/" + parse_json['data']["Aatrox"]["image"]["full"] #stores the value associated with 'url' in the JSON to variable pictureURL
 #print(pictureURL) #checks the image to see it is the correct image
 
 #title = parse_json['data']["Aatrox"]["id"] #retrieves the title of the picture
@@ -92,17 +92,24 @@ def strength(attackdamage, attackdamageperlevel): #tests to see if the league ch
 #print(strength(parse_json['data']["Aatrox"]["stats"]["attackdamage"], parse_json['data']["Aatrox"]["stats"]["attackdamageperlevel"])) 
 #tests the strength function above
 
+#Helper Function
+def league_image(champion):
+    file = riot_json['data'][str(champion)]
+    image = "http://ddragon.leagueoflegends.com/cdn/12.23.1/img/champion/" + file["image"]["full"]
+    return image
+
 #THE MAIN FUNCTION THAT USES ALL THE HELPER FUNCTIONS
 def League(champion):
-    file = parse_json['data'][str(champion)]
+    file = riot_json['data'][str(champion)]
     characteristics = []
     characteristics.append(file["id"])
     characteristics.append(tags(file['tags']))
     characteristics.append(partype(file["partype"]))
     characteristics.append(weight(file["stats"]["armor"], file["stats"]["spellblock"]))
     characteristics.append(strength(file["stats"]["attackdamage"], file["stats"]["attackdamageperlevel"]))
-    return characteristics #Name, Attributes, Weird/Normal, Big/Skinny, Kind/Strong
-#print(League("Aatrox"))
+    characteristics.append(league_image(champion))
+    return characteristics #Name, Attributes, Weird/Normal, Big/Skinny, Kind/Strong, Image
+print(League("Aatrox"))
 
 #=======================================================================================================================
 #poke API CODE
@@ -172,6 +179,14 @@ def height(id):
         height = "short"
     return height
 
+#Help Function that retrieves the image from the API
+def image(id):
+    imageAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
+    imageInfo = imageAPI.text
+    image_json = json.loads(imageInfo)
+    imageURL = image_json["sprites"]["front_default"]
+    return imageURL
+
 #MASTER FUNCTION
 def pokemon(name): 
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
@@ -187,6 +202,7 @@ def pokemon(name):
     pokemon.append(heavy(id))
     pokemon.append(types(id))
     pokemon.append(height(id))
+    pokemon.append(image(id))
     return pokemon
 print(pokemon("dragonite"))
 
