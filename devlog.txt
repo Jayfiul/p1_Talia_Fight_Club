@@ -135,3 +135,28 @@ anthonyS -- 2022-12-13 8:56
 --------------------------------------------------------------
 update .gitignore
 research better anime api
+==============================================================
+
+taliaH -- 2022-12-13 9:20
+--------------------------------------------------------------
+added api keys for love-calculator API
+read through documentation for pokeAPI and love-calculator API
+found code inserts and verified that pokeapi has no key
+*note:inserts not put in yet because we have no calling mech*
+==============================================================
+
+yushaA -- 2022-12-13 9:24
+--------------------------------------------------------------
+figured out personality questions required for pokeAPI.
+added to the /doc files with markdown files explaining and how we are using riotAPI and pokeAPI
+learned how to create a loading mechanism in place and api storage. 
+==============================================================
+
+yushaA -- 2022-12-13 21:00
+--------------------------------------------------------------
+researched on what parts of the pokeAPI that I could use for the personality quiz.
+looked through the riotapi doccumentation to find how I could register the pokemon TYPE, found it!
+created all the necessary helper functions for obtaining the pokemon characters data.
+created a main function that puts all of the info for a pokemon character in an array ready to be put in a sqlite database.
+added to the /doc files with markdown files explaining and how we are using pokeAPI
+==============================================================
