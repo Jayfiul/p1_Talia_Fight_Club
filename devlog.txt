@@ -158,4 +158,5 @@ researched on what parts of the pokeAPI that I could use for the personality qui
 looked through the riotapi doccumentation to find how I could register the pokemon TYPE, found it!
 created all the necessary helper functions for obtaining the pokemon characters data.
 created a main function that puts all of the info for a pokemon character in an array ready to be put in a sqlite database.
+added to the /doc files with markdown files explaining and how we are using pokeAPI
 ==============================================================
