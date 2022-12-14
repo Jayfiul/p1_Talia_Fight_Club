@@ -108,37 +108,89 @@ def League(champion):
 #poke API CODE
 #=======================================================================================================================
 
-def pokemon(name):
-    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
-    pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
-    poke_json = json.loads(pokeInfo)
-    pokemon = []
-    pokemon.append(poke_json["name"])
-    pokemon.append(color(name))
-    pokemon.append(shape(name))
-    pokemon.append(habitat(name))
-    return pokemon
-
+#Helper Function
 def color(name):
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
     poke_json = json.loads(pokeInfo)
     return poke_json["color"]["name"]
 
+#Helper Function
 def shape(name):
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
     poke_json = json.loads(pokeInfo)
     return poke_json["shape"]["name"]
 
+#Helper Function
 def habitat(name):
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
     poke_json = json.loads(pokeInfo)
     return poke_json["habitat"]["name"]
-    
 
-print(pokemon("dratini"))
+#def types(types):
+#    typeAPI = requests.get('https://pokeapi.co/api/v2/type/' + types)
+#    typeInfo = typeAPI.text
+#    type_json = json.loads(typeInfo)
+#    pokemon = []
+#    for x in type_json["pokemon"]:
+#        pokemon.append(x["pokemon"]["name"])
+#    return pokemon
+#print(types("dragon"))
+
+#Helper Function
+def heavy(id):
+    weightAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
+    weightInfo = weightAPI.text
+    weight_json = json.loads(weightInfo)
+    if weight_json["weight"] > 100:
+        weight = "heavy"
+    else: weight = "light"
+    return weight
+
+#Helper Function
+def types(id):
+    typesAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
+    typesInfo = typesAPI.text
+    types_json = json.loads(typesInfo)
+    types = []
+    for x in types_json["types"]:
+        types.append(x["type"]["name"])
+    return types
+
+#Helper Function
+def height(id):
+    weightAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
+    weightInfo = weightAPI.text
+    weight_json = json.loads(weightInfo)
+    if weight_json["height"] > 20:
+        height = "tall"
+    elif weight_json["height"] > 17:
+        height = "medium"
+    else: 
+        height = "short"
+    return height
+
+#MASTER FUNCTION
+def pokemon(name): 
+    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
+    pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
+    poke_json = json.loads(pokeInfo)
+    pokemon = []
+    pokemon.append(poke_json["name"])
+    id = int(poke_json["id"])
+    pokemon.append(id)
+    pokemon.append(color(name))
+    pokemon.append(shape(name))
+    pokemon.append(habitat(name))
+    pokemon.append(heavy(id))
+    pokemon.append(types(id))
+    pokemon.append(height(id))
+    return pokemon
+print(pokemon("dragonite"))
+
+    
     
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified
