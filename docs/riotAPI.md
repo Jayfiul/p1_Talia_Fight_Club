@@ -5,7 +5,7 @@
 ### Relation to Personality Test:
 - Ask the user what their favorite preference in professions would be: 
     - Mage, Assassin, Tank	
-``` 
+``` python
 def tags(attributes):
     tags = [len(attributes)]
     for x in attributes:
@@ -18,18 +18,18 @@ print(tags(parse_json['data']["Ahri"]["tags"]))
 - Ask the user if they are interested in normal or slightly weird people.
     - Mana: Normal
     - Anything else (Fury, Blood Well, Energy, …)
-```
+```python
 def partype(partype):
     type = "Weird"
     if(partype == "Mana"):
         type = "Normal"
     return type
-print(partype(parse_json['data']["Aatrox"]["partype"])) #tests the tags function above
+#(partype(parse_json['data']["Aatrox"]["partype"])) #tests the tags function above
 ```
 
 - Ask the user if their preference is skinny or big people
     - Using the armor and spell block to simulate weight
-```
+```python
 def weight(armor, spellblock): #tests the league character's bodytype
    weight = "Skinny"
    #print(armor, spellblock) #test
@@ -42,7 +42,7 @@ def weight(armor, spellblock): #tests the league character's bodytype
 
 - Ask the user if their preference is strong or weak but kind people:
     - Using attackdamage, and attackdamageperlevel to simulate if the character is kind or tough people.
-```
+```python
 def strength(attackdamage, attackdamageperlevel): #tests to see if the league character is kind or tough
    strength = "Kind"
    #print(armor, spellblock) #test
@@ -55,7 +55,7 @@ def strength(attackdamage, attackdamageperlevel): #tests to see if the league ch
 
 ### One Function to Rule them All: 
 - It uses all the helper functions in one function that just needs the name of the champion to work
-```
+```python
 def League(champion):
    file = parse_json['data'][str(champion)]
    characteristics = []
