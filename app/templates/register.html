@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% include
+	{% set page_title = 'Register' %}
+	{% set page_description = 'Register for the full application experience' %}
+	{% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
 </head>
 
 <body class="register">
-                {% include('partials/_navbar.html') %}
+  {% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
 
 <h1>
     Smh devo no account

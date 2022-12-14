@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> test </title>
+    {% set page_title = 'Test' %}
+    {% set page_description = 'Get to know your anime partner' %}
+	{% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
+
 </head>
 
 <body class="landing">
-Made by Talia Fight Club (Sponsored by Yusha)
+{% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
 
 <div>
         {% include('partials/_navbar.html') %}

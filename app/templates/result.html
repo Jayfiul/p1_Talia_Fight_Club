@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> result </title>
+    {% set page_title = 'Result' %}
+	{% set page_description = 'Some page Talia added that I have no idea how it works' %}
+	{% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
+
 </head>
 
 <body class="landing">
