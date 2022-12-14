@@ -37,10 +37,10 @@ app.secret_key = b64.base64_encode(
 @app.before_request
 def before_request():
     request.db = db
-    # Try to get username from session
-    print(request.cookies)
-    # Parse session cookie
-    if 'username' in request.session:
+    # Get username from session
+    request.username = None
+    if 'username' in request.cookies:
+        request.username = request.cookies['username']
         request.is_logged_in = True
 
 #=======================================================================================================================
