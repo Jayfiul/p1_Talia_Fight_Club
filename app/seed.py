@@ -40,7 +40,8 @@ from database import database
 from database import user
 from database import character
 from database import question
-
+from database import pokemon
+from database import league
 
 def seed():
     """
@@ -53,7 +54,9 @@ def seed():
     if input().lower() == "y":
         db = database.Database()
         user.create_table(db)
-        character.create_table(db)
+        pokemon.create_table(db)
+        league.create_table(db)
+        #character.create_table(db)
         question.create_table(db)
         print("Seeded database with tables (this may or may not have worked)")
     else:
