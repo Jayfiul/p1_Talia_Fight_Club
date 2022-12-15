@@ -160,3 +160,10 @@ created all the necessary helper functions for obtaining the pokemon characters 
 created a main function that puts all of the info for a pokemon character in an array ready to be put in a sqlite database.
 added to the /doc files with markdown files explaining and how we are using pokeAPI
 ==============================================================
+
+yushaA -- 2022-12-14 9:25
+--------------------------------------------------------------
+added image capability for both pokeAPI and riotAPI.
+fixed the bugs I found with the api code that I wrote yesterday.
+started researching on the valorant API and animeAPI.
+==============================================================

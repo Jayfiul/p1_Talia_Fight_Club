@@ -2,20 +2,19 @@
 <html>
 
 <head>
-    <title> LOGIN PAGE </title>
+    {% set page_title = 'Login' %}
+    {% set page_description = 'Login to the best application on the internet.' %}
+    {% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
 </head>
 
 <body>
-    {% include('partials/_navbar.html') %}
+    {% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
 
 <h1>
     Welcome, Devo whatchu u doing here
 </h1>
 
 
-<h3>
-    login COMING SOON to theaters near you.
-</h3>
 <br>
 
 <div>

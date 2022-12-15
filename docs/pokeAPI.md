@@ -5,7 +5,7 @@
 ### Relation to Personality Test:
 - Ask the user what their favorite color is
 - Ask the user what their least favorite color is
-```
+```python
 def color(name):
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
@@ -15,7 +15,7 @@ def color(name):
 
 - Ask the user what their favorite element is
     - Fire, Ice, Dragon, Water, etc.
-```
+```python
 def types(id):
     typesAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
     typesInfo = typesAPI.text
@@ -28,7 +28,7 @@ def types(id):
 
 - Ask the user what their favorite habitat is
     - Hot, Cold, Ocean, City
-```
+```python
 def habitat(name):
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
@@ -38,7 +38,7 @@ def habitat(name):
 
 - Ask the user what their favorite shape is
   - Ex: quadrupled
-```
+```python
 def shape(name):
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
@@ -48,7 +48,7 @@ def shape(name):
 
 - Ask the user what their preference on weight is:
   - Heavy or Light
-```
+```python
 def heavy(id):
     weightAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
     weightInfo = weightAPI.text
@@ -61,7 +61,7 @@ def heavy(id):
 
 - Ask the user what their prefrence on height is:
   - Tall, Average, or Small
-```
+```python
 def height(id):
     weightAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
     weightInfo = weightAPI.text
@@ -77,7 +77,7 @@ def height(id):
 
 
 ### Master Function
-```
+```python
 def pokemon(name): 
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
