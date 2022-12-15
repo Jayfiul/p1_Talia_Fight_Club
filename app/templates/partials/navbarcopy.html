@@ -1,0 +1,79 @@
+<nav class="flex items-center justify-between flex-wrap bg-gray-100 p-6">
+    <div class="flex items-center flex-shrink-0 mr-6">
+	<a href="/" class="font-semibold text-xl tracking-tight">Talia Fight Club</a>
+    </div>
+
+    <!-- Hamburger menu -->
+    <div class="block lg:hidden" id="nav-toggle">
+        <button class="flex items-center px-1 py-1 text-gray-800 border-teal-400" id="hamburger-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="menu-icon" class="ionicon w-8 h-8 duration-300">
+                <title>
+                Add Circle</title>
+                <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none"
+                      stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+                      d="M256 176v160M336 256H176"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Actual list of links, make it so that when the user opens the menu, it slides down from top on mobile devices smoothly -->
+    <div id="nav-list" class="w-full flex-grow lg:flex lg:items-center lg:w-auto overflow-hidden lg:overflow-visible duration-300">
+        <div class="text-sm lg:flex-grow">
+            <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black mr-4">
+                Home
+            </a>
+            <a href="/test" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black mr-4">
+                Test page 1
+            </a>
+            <a href="/omnicode" class="block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-black">
+                Contact
+            </a>
+        </div>
+        <div>
+            {% if is_logged_in %}
+	    <a href="/logout" class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-600 border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Logout</a>
+	    {% else %}
+	    <a href="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-600 border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</a>
+	    <a href="/register" class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-600 border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Register</a>
+	    {% endif %}
+        </div>
+    </div>
+
+    <!-- Script to toggle the menu -->
+    <script>
+        // Height = 0 when hidden, height = max-content when shown
+        document.getElementById("nav-list").style.maxHeight = "0px";
+        let isMenuOpen = false;
+
+        document.getElementById('nav-toggle').onclick = function () {
+            // Smooth transition
+            if (isMenuOpen) {
+                document.getElementById("nav-list").style.maxHeight = "0px";
+                document.getElementById("menu-icon").style.transform = "rotate(0deg)";
+            } else {
+                document.getElementById("nav-list").style.maxHeight = "500px";
+                document.getElementById("menu-icon").style.transform = "rotate(45deg)";
+            }
+            isMenuOpen = !isMenuOpen;
+        }
+
+        // If the menu is open and the user clicks outside of it, close it
+        document.addEventListener('click', function (event) {
+            if (isMenuOpen && !event.target.closest('#nav-toggle')) {
+                document.getElementById("nav-list").classList.toggle("hidden");
+                isMenuOpen = false;
+            }
+        });
+
+        // If the menu is open and the user presses the escape key, close it
+        document.addEventListener('keydown', function (event) {
+            if (isMenuOpen && event.key === 'Escape') {
+                document.getElementById("nav-list").classList.toggle("hidden");
+                isMenuOpen = false;
+            }
+        });
+
+
+    </script>
+</nav>
