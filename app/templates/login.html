@@ -17,31 +17,30 @@
 
 <br>
 
-<div>
-    <h2 id="loghead">
-        LOGIN HERE
-    </h2>
-    <h3>
-        Username:
-    </h3>
-    <form action="/login" method="POST" class="form">
-        <input type="text" name="username">
-        <br>
-        <h3>
-            Password:
-        </h3>
-        <input type="password" name="password">
-        <br>
-        <br>
-        <input type="submit" name="sub1" value="Login" id class="button">
-        <h2>
-            Don't have an account???
-        </h2>
-        <button type="button" class="button"><a href="/register">REGISTER</a></button>
-    </form>
-    <br>
-    <div id="logmsg">
-        {{ loginMSG }}
+    <div class="container-md">
+        <form action="/login" method="POST" class="form">
+            <div class="form-floating mb-3">   
+                <input type="text" class="form-control" id="floatingInput" name = "username" placeholder="Username">
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword"  name = "password" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div class="container-sm">
+                <input type="submit" class="btn btn-outline-success" name="sub1" value="Login" id class="button">
+            </div>
+            <br>
+            <h2>
+                Don't have an account???
+            </h2>
+            <a href="/register" class = "btn btn-outline-success">REGISTER</a>
+
+        </form>
+
+        <div id="logmsg">
+            {{ loginMSG }}
+        </div>
     </div>
 </div>
 
