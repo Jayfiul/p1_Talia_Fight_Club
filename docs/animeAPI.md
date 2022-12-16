@@ -39,8 +39,6 @@ def list_of_gender(pref: str, id: int) -> list:
         if char["gender"] == pref:
             char_list.append(char["name"])
     return char_list
-
-#(partype(parse_json['data']["Aatrox"]["partype"])) #tests the tags function above
 ```
 
 ### Main function: 

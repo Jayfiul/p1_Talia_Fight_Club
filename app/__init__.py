@@ -192,13 +192,20 @@ def image(id):
     return imageURL
 
 #MASTER FUNCTION
-def pokemon(name): 
+def pokemon(id): 
+    idAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
+    idInfo = idAPI.text
+    id_json = json.loads(idInfo)
+    name = id_json["forms"][0]["name"]
+
+
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
     poke_json = json.loads(pokeInfo)
     pokemon = []
+
     pokemon.append(poke_json["name"])
-    id = int(poke_json["id"])
+    #id = int(poke_json["id"])
     pokemon.append(id)
     pokemon.append(color(name))
     pokemon.append(shape(name))
@@ -208,10 +215,56 @@ def pokemon(name):
     pokemon.append(height(id))
     pokemon.append(image(id))
     return pokemon
-print(pokemon("dragonite"))
+#print(pokemon("dragonite"))
 
+i = 1
+while i <= 905:
+    print(pokemon(i))
+    i = i+1
+
+#def insert(db, name, attributes, weird, weight, strength, image)
+
+#=============================================================================================
+#Anime API Code
+#=============================================================================================
+
+def anime_ids(animes: list) -> list:
+    id_list = []
+    headers= {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+    }
+    for anime in animes:
+        req = requests.get("https://www.animecharactersdatabase.com/api_series_characters.php?anime_q="+anime, headers=headers)
+        data=json.loads(req.content, strict=False)
+        id_list.append(data["search_results"][0]["anime_id"])
+    return id_list
+
+print(anime_ids(["attack on titan"]))
+
+def list_of_gender(pref: str, id: int) -> list:
+    char_list = []
+    headers= {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+    }
+    req = requests.get("https://www.animecharactersdatabase.com/api_series_characters.php?anime_id="+str(id), headers=headers)
+    data=json.loads(req.content, strict=False)
     
-    
+    for char in data["characters"]:
+        if char["gender"] == pref:
+            char_list.append(char["name"])
+    return char_list
+print(anime_ids(["attack on titan"]))
+
+def anime(animes, gender):
+    id_list = anime_ids(animes)
+    char_list = []
+    for id in id_list:
+        for char in list_of_gender(gender, id):
+            char_list.append(char)
+    return char_list
+print(anime("attack on titan", "male"))
+
+
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified
     app.debug = True
