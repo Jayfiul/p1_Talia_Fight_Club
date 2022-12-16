@@ -167,3 +167,26 @@ added image capability for both pokeAPI and riotAPI.
 fixed the bugs I found with the api code that I wrote yesterday.
 started researching on the valorant API and animeAPI.
 ==============================================================
+
+taliaH -- 2022-12-14 9:26
+--------------------------------------------------------------
+built in navbar and python associated code
+navbar now loads for all pages
+connect pages with navbar
+transfer to tailwind 
+==============================================================
+
+taliaH -- 2022-12-15 9:20
+--------------------------------------------------------------
+import bootstrap
+convert tailwind code to bootstrap
+rebuilt navbar in bootstrap with route connections
+worked on python navbar bug
+==============================================================
+
+taliaH -- 2022-12-16 9:22
+--------------------------------------------------------------
+built landing page basic layout for home
+worked on python navbar bug
+started layout for login/register forms
+==============================================================
