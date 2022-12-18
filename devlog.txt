@@ -176,6 +176,13 @@ connect pages with navbar
 transfer to tailwind 
 ==============================================================
 
+yushaA -- 2022-12-15 9:25
+--------------------------------------------------------------
+Updated the databases
+Added new tables
+Started to put the info into tables
+==============================================================
+
 taliaH -- 2022-12-15 9:20
 --------------------------------------------------------------
 import bootstrap
@@ -189,4 +196,17 @@ taliaH -- 2022-12-16 9:22
 built landing page basic layout for home
 worked on python navbar bug
 started layout for login/register forms
+==============================================================
+
+yushaA -- 2022-12-16 9:26
+--------------------------------------------------------------
+Started working on putting the questions in the databases
+Started to implement character deciding using the personality quiz
+==============================================================
+
+yushaA -- 2022-12-18 15:39
+--------------------------------------------------------------
+Fixed some major bugs in the API code
+Started the process of adding the API to the databses
+Updated the documents 
 ==============================================================

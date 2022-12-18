@@ -15,20 +15,20 @@ def create_table(db) -> None:
     db.cur.execute("CREATE TABLE IF NOT EXISTS pokemon (" +
                    "id INTEGER PRIMARY KEY, " +
                    "name TEXT, " +
+                   "IdS INT, " +
                    "color TEXT, " +
                    "shape TEXT, " +
-                   "habitat TEXT, " +
                    "heavy TEXT, " + 
                    "types TEXT, " +
-                   "image TEXT, " +
-                   "height TEXT)")
+                   "height TEXT, " +
+                   "image TEXT)")
     db.conn.commit()
 
 
 
-def insert(db, name, color, shape, habitat, heavy, types, height) -> None:
+def insert(db, name, IdS, color, shape, heavy, types, height, image) -> None:
     
     db.cur.execute("INSERT INTO users VALUES " +
                    "(NULL, ?, ?, ?, ?)",
-                   (name, color, shape, habitat, heavy, types, height))
+                   (name, IdS, color, shape, heavy, types, height, image))
     db.conn.commit()
