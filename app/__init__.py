@@ -17,6 +17,7 @@ from routes.test import test_bp
 from utils import b64
 
 from utils import lol_api
+from utils import poke_api
 
 global db
 db = database.Database()
@@ -34,13 +35,15 @@ app.secret_key = b64.base64_encode(
     "this is one hell of a secret key. it's really secure now that we encoded it into base64!")
 
 league_characters = lol_api.LOLApi()
-
+poke_api = poke_api.PokeApi()
+poke_api.get_all_pokemon()
+poke_api.get_all_pokemon_species()
 
 @app.before_request
 def before_request():
     request.db = db
 
-
+"""
 # =======================================================================================================================
 # poke API CODE
 # =======================================================================================================================
@@ -113,7 +116,6 @@ def height(heightER):
 # MASTER FUNCTION
 
 # PLEASE DO NOT DENIAL-OF-SERVICE THE APIS WE ARE USING!!!!!
-"""
 def pokemon(name):
     pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
     pokeInfo = pokeAPI.text  # pulls all the information from the api file and puts in this string variable
@@ -144,10 +146,10 @@ def pokemon(name):
     pokemon.append(id_json["sprites"]["front_default"])  # tretrieves the image URL
 
     return pokemon  # returns name, id, color, shape, weight, types, height, image
+"""
 
-
-# print(pokemon("dragonite"))
-
+print(poke_api.get_pokemon("bulbasaur"))
+"""
 pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=1000')
 pokeInfo = pokeAPI.text  # pulls all the information from the api file and puts in this string variable
 poke_json = json.loads(pokeInfo)

@@ -1,5 +1,6 @@
 import requests
-
+import time
+from progress_bar import ProgressBar
 
 class PokeApi:
     def __init__(self):
@@ -8,6 +9,7 @@ class PokeApi:
         self.poke_species = self.get_poke_species_list()
         self.poke_list = self.get_poke_list()
         self.cache = {}
+        self.species_cache = {}
 
     def get_poke_species_list(self):
         response = requests.get(self.poke_species_url)
@@ -25,15 +27,45 @@ class PokeApi:
         if poke_name in self.cache and not force:
             return self.cache[poke_name]
         else:
-            poke_data = requests.get(self.poke_species_url + poke_name).json()
+            poke_data = requests.get(self.poke_url + poke_name).json()
             self.cache[poke_name] = poke_data
             return poke_data
 
+    def get_all_pokemon(self):
+        pokemon = []
+        load_progress = ProgressBar(len(self.poke_list))
+        progress = 0
+        for poke in self.poke_list:
+            pokemon.append(self.get_pokemon(poke['name']))
+            progress += 1
+            load_progress.update(progress, 'Loaded pokemon: ' + poke['name'])
+        load_progress.finish("Loaded all pokemon")
+        return pokemon
+
+    def get_all_pokemon_species(self):
+        pokemon = []
+        load_progress = ProgressBar(len(self.poke_species))
+        progress = 0
+        for poke in self.poke_species:
+            pokemon.append(self.get_pokemon_species(poke['name']))
+            progress += 1
+            load_progress.update(progress, 'Loaded pokemon: ' + poke['name'])
+        load_progress.finish("Loaded all pokemon")
+        return pokemon
+
+    def get_poke_species_data(self, species_name, force=False):
+        if species_name in self.species_cache and not force:
+            return self.species_cache[species_name]
+        else:
+            poke_data = requests.get(self.poke_species_url + species_name).json()
+            self.species_cache[species_name] = poke_data
+            return poke_data
+
     def get_poke_color(self, poke_name):
-        return self.get_poke_data(poke_name)['color']['name']
+        return self.get_poke_species_data(poke_name)['color']['name']
 
     def get_poke_shape(self, poke_name):
-        return self.get_poke_data(poke_name)['shape']['name']
+        return self.get_poke_species_data(poke_name)['shape']['name']
 
     def get_poke_habitat(self, poke_name):
         return self.get_poke_data(poke_name)['habitat']['name']
@@ -55,36 +87,14 @@ class PokeApi:
         else:
             return 'short'
 
-    """
-    def pokemon(name):
-    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
-    pokeInfo = pokeAPI.text  # pulls all the information from the api file and puts in this string variable
-    poke_json = json.loads(pokeInfo)
-    id = int(poke_json["id"])
-
-    idAPI = requests.get('https://pokeapi.co/api/v2/pokemon/' + str(id))
-    idInfo = idAPI.text
-    id_json = json.loads(idInfo)
-
-    pokemon = []
-
-    pokemon.append(poke_json["name"])
-    id = int(poke_json["id"])
-    pokemon.append(id)
-
-    pokemon.append(poke_json["color"]["name"])
-    # pokemon.append(poke_json["shape"]["name"])
-    # pokemon.append(poke_json["habitat"]["name"])
-    # pokemon.append(poke_json["shape"]["name"])
-    if (name == "meltan" or name == "melmetal"):
-        pokemon.append("NULL")
-    else:
-        pokemon.append(poke_json["shape"]["name"])
-    pokemon.append(heavy(id_json["weight"]))
-    pokemon.append(types(id_json["types"]))
-    pokemon.append(height(id_json["height"]))
-    pokemon.append(id_json["sprites"]["front_default"])  # tretrieves the image URL
-
-    return pokemon  # returns name, id, color, shape, weight, types, height, image
-    """
-
+    def get_pokemon(self, poke_name):
+        pokemon = []
+        pokemon.append(poke_name)
+        pokemon.append(self.get_poke_data(poke_name)['id'])
+        pokemon.append(self.get_poke_color(poke_name))
+        pokemon.append(self.get_poke_shape(poke_name))
+        pokemon.append(self.get_poke_weight(poke_name))
+        pokemon.append(self.get_poke_types(poke_name))
+        pokemon.append(self.get_poke_height(poke_name))
+        pokemon.append(self.get_poke_data(poke_name)['sprites']['front_default'])
+        return pokemon
