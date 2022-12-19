@@ -1,6 +1,6 @@
 import requests
 import time
-from progress_bar import ProgressBar
+from utils.progress_bar import ProgressBar
 
 class PokeApi:
     def __init__(self):
