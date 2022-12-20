@@ -26,16 +26,6 @@ def types(id):
     return types
 ```
 
-- Ask the user what their favorite habitat is
-    - Hot, Cold, Ocean, City
-```python
-def habitat(name):
-    pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/' + str(name))
-    pokeInfo = pokeAPI.text #pulls all the information from the api file and puts in this string variable
-    poke_json = json.loads(pokeInfo)
-    return poke_json["habitat"]["name"]
-```
-
 - Ask the user what their favorite shape is
   - Ex: quadrupled
 ```python

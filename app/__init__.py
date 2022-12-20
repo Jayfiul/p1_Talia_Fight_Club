@@ -206,7 +206,34 @@ def anime(animes, gender):
 
 
 # print(anime("attack on titan", "male"))
+#======================================================================
+#Personality QUiz
+#======================================================================
 
+#Question, Options, Pokemon/League/Anime
+League_Questions = [ 
+            "What profession would you prefer your significant other to have?",
+            "Are you into normal or slightly weird people?"
+            "Is your preference skinny or big people?"
+            "Do you like strong but mean or kind but weak people?"
+            ]
+Professions = ["Fighter", "Mage", "Marksman", "Tank", "support"]
+Normal_Weird = ["Normal", "Weird"]
+Skinny_Big = ["Skinny", "Big"]
+Strong_Weak = ["Strong & Mean", "Kind & Weak"]
+
+Poke_Questions = [
+    "What is your favorite color?"
+    "What is your favorite element?"
+    "What is your favorite shape in a person?"
+    "What is your preference in weight?"
+    "What is your preference in height?"
+]
+Colors = ["black", "blue", "brown", "gray", "green", "pink", "purple", "red", "whiet", "yellow"]
+Elements = ["normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy"]
+Shapes = ["ball","squiggle","fish","arms","blobs","upright","legs","quadruped","wings","tentacles","humanoid"]
+Weight = ["Heavy", "Light"]
+Height = ["Tall", "Medium", "Short"]
 
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified

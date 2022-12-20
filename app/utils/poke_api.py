@@ -72,20 +72,20 @@ class PokeApi:
 
     def get_poke_weight(self, poke_name):
         if self.get_poke_data(poke_name)['weight'] > 100:
-            return 'heavy'
+            return 'Heavy'
         else:
-            return 'light'
+            return 'Light'
 
     def get_poke_types(self, poke_name):
         return [x['type']['name'] for x in self.get_poke_data(poke_name)['types']]
 
     def get_poke_height(self, poke_name):
         if self.get_poke_data(poke_name)['height'] > 20:
-            return 'tall'
+            return 'Tall'
         elif self.get_poke_data(poke_name)['height'] > 17:
-            return 'medium'
+            return 'Medium'
         else:
-            return 'short'
+            return 'Short'
 
     def get_pokemon(self, poke_name):
         pokemon = []
