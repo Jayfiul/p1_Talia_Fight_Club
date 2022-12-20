@@ -191,6 +191,12 @@ rebuilt navbar in bootstrap with route connections
 worked on python navbar bug
 ==============================================================
 
+anthonyS -- 2022-12-16 8:00
+--------------------------------------------------------------
+make animeAPI doc
+write code for animeAPI nuances
+refine riotAPI code
+
 taliaH -- 2022-12-16 9:22
 --------------------------------------------------------------
 built landing page basic layout for home
