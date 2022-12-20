@@ -27,9 +27,12 @@ class PokeApi:
         if poke_name in self.cache and not force:
             return self.cache[poke_name]
         else:
-            poke_data = requests.get(self.poke_url + poke_name).json()
-            self.cache[poke_name] = poke_data
-            return poke_data
+            try:
+                poke_data = requests.get(self.poke_url + poke_name).json()
+                self.cache[poke_name] = poke_data
+                return poke_data
+            except:
+                return None
 
     def get_all_pokemon(self):
         pokemon = []
