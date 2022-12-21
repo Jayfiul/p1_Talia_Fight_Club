@@ -20,6 +20,8 @@ from utils import b64
 
 from utils import lol_api
 from utils import poke_api
+from utils import anime_api
+from utils import lovecalc_api
 
 global db
 db = database.Database()
