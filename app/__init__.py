@@ -3,11 +3,12 @@ import json
 import requests
 from flask import Flask, request  # web server essentials
 
-from database import character  # character database operations
-from database import database  # main database class
+from database import database
+from database import question
 from database import league
-from database import question  # question database operations
-from database import user  # user database operations
+from database import anime
+from database import pokemon
+
 from routes.home import home_bp
 from routes.login import login_bp
 from routes.logout import logout_bp
@@ -21,6 +22,7 @@ from utils import poke_api
 
 global db
 db = database.Database()
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -146,10 +148,8 @@ def pokemon(name):
     pokemon.append(id_json["sprites"]["front_default"])  # tretrieves the image URL
 
     return pokemon  # returns name, id, color, shape, weight, types, height, image
-"""
 
 print(poke_api.get_pokemon("bulbasaur"))
-"""
 pokeAPI = requests.get('https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=1000')
 pokeInfo = pokeAPI.text  # pulls all the information from the api file and puts in this string variable
 poke_json = json.loads(pokeInfo)
@@ -157,7 +157,6 @@ poke_json = json.loads(pokeInfo)
 for y in poke_json["results"]:
     print(pokemon(y["name"]))
     
-"""
 
 
 # =============================================================================================
@@ -234,6 +233,7 @@ Elements = ["normal","fighting","flying","poison","ground","rock","bug","ghost",
 Shapes = ["ball","squiggle","fish","arms","blobs","upright","legs","quadruped","wings","tentacles","humanoid"]
 Weight = ["Heavy", "Light"]
 Height = ["Tall", "Medium", "Short"]
+"""
 
 if __name__ == "__main__":  # false if this file imported as module
     # enable debugging, auto-restarting of server when this file is modified

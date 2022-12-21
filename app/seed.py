@@ -36,9 +36,7 @@ String (JSON)
 """
 
 from database import database
-
-from database import user
-from database import character
+from database import anime
 from database import question
 from database import pokemon
 from database import league
@@ -53,12 +51,52 @@ def seed():
     print("Are you sure you want to seed the database? This will erase ANY contents in the database (y/n)", end=" ")
     if input().lower() == "y":
         db = database.Database()
-        user.create_table(db)
+        anime.create_table(db)
         pokemon.create_table(db)
         league.create_table(db)
-        #character.create_table(db)
         question.create_table(db)
-        print("Seeded database with tables (this may or may not have worked)")
+
+        # -------------------
+        # START QUESTION POP
+        # -------------------
+        def populate_question_table(universe, questions, choices):
+            for i in range(len(questions)):
+                question.insert(db, universe, questions[i], choices[i])
+
+        League_Questions = [
+            "What fantasy profession would you like to have?",
+            "Do you like normal or slightly weird people?",
+            "Is your preference skinny or big people?",
+            "Do you like strong but mean or kind but weak people?"
+        ]
+
+        choices = ["Adventurer,Wizard,Ranger,Paladin,Thief,Healer",
+                   "Normal,Weird",
+                   "Skinny,Big",
+                   "Strong & Mean,Kind & Weak"]
+
+        populate_question_table("League", League_Questions, choices)
+
+        Poke_Questions = [
+            "What is your favorite color?",
+            "What is your favorite element?",
+            "What is your favorite shape?",
+            "What is your preference in weight?",
+            "What is your preference in height?"
+        ]
+        choices = ["black,blue,brown,gray,green,pink,purple,red,white,yellow",
+                   "normal,fighting,flying,poison,ground,rock,bug,ghost,steel,fire,water,grass,electric,psychic,ice,dragon,dark,fairy",
+                   "ball,squiggle,fish,arms,blobs,upright,legs,quadruped,wings,tentacles,humanoid",
+                   "Heavy,Light",
+                   "Tall,Medium,Short"]
+
+        populate_question_table("Pokemon", Poke_Questions, choices)
+
+        populate_question_table("Anime", ["What gender do you align with?"], ["Male", "Female", "Either"])
+        # -------------------
+        # END QUESTION POP
+        # -------------------
+        print("Seeded database with tables")
     else:
         print("Did not seed database (user cancelled)")
 
