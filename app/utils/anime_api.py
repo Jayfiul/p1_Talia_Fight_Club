@@ -1,7 +1,7 @@
 import requests
 import json
 
-class AnimeAPI:
+class AnimeApi:
     def __init__(self):
         self.anime_url = 'https://www.animecharactersdatabase.com/api_series_characters.php?anime_id='
         self.headers = {
