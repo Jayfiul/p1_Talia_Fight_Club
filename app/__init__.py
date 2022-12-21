@@ -15,7 +15,7 @@ from routes.logout import logout_bp
 from routes.register import register_bp
 from routes.result import result_bp
 from routes.test import test_bp
-from routes.test2 import test2_bp
+from routes.settings import settings_bp
 from utils import b64
 
 from utils import lol_api
@@ -34,17 +34,17 @@ app.register_blueprint(login_bp)
 app.register_blueprint(logout_bp)
 app.register_blueprint(register_bp)
 app.register_blueprint(test_bp)
-app.register_blueprint(test2_bp)
 app.register_blueprint(result_bp)
+app.register_blueprint(settings_bp)
 
 app.secret_key = b64.base64_encode(
     "this is one hell of a secret key. it's really secure now that we encoded it into base64!")
 
-league_characters = lol_api.LOLApi()
+global lol_api, poke_api, anime_api, lovecalc_api
+lol_api = lol_api.LOLApi()
 poke_api = poke_api.PokeApi()
 poke_api.get_all_pokemon()
-
-
+anime_api = anime_api.AnimeApi()
 
 @app.before_request
 def before_request():

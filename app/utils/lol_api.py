@@ -66,3 +66,9 @@ class LOLApi:
             self.get_champion_image(champion_name)
         ]
         return characteristics
+
+    def get_all_champions(self):
+        champions = []
+        for champion in self.champion_list:
+            champions.append(self.get_champion(champion))
+        return champions

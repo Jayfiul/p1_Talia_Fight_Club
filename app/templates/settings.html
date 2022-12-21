@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% set page_title = 'Settings' %}
+	{% set page_description = 'Change quiz and page settings here' %}
+	{% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
+</head>
+
+<body class="landing">
+{% include('partials/_navbar.html') %}
+<form class="form" id="allowed-questions-form">
+    <!-- Three checkboxes for League of Legends, Pokemon, and Anime -->
+    <h3>
+        Please select the categories you would like to be quizzed on:
+    </h3>
+    <p>
+        Whenever you change a setting, it is saved automatically!
+    </p>
+    <div class="form-group">
+        <label for="league-of-legends">League of Legends</label>
+        <input type="checkbox" name="league-of-legends" id="league-of-legends" value="league-of-legends">
+    </div>
+    <div class="form-group">
+        <label for="pokemon">Pokemon</label>
+        <input type="checkbox" name="pokemon" id="pokemon" value="pokemon">
+    </div>
+    <div class="form-group">
+        <label for="anime">Anime</label>
+        <input type="checkbox" name="anime" id="anime" value="anime">
+    </div>
+</form>
+
+<script>
+    // Load cookie
+    var allowedQuestions = document.cookie.split(';').filter(function(item) {
+        return item.indexOf('allowedQuestions') >= 0
+    })[0].split('=')[1];
+    // Parse JSON
+    allowedQuestions = JSON.parse(allowedQuestions);
+    // Set checkboxes
+    for (var i = 0; i < allowedQuestions.length; i++) {
+        document.getElementById(allowedQuestions[i]).checked = true;
+    }
+
+    // For each checkbox update
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    // Add event listener
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener('change', update);
+    }
+
+    function update () {
+        // Get the values of the checkboxes
+        var leagueOfLegends = document.getElementById('league-of-legends').checked;
+        var pokemon = document.getElementById('pokemon').checked;
+        var anime = document.getElementById('anime').checked;
+        // Create an object to store the values
+        var allowedQuestions = []
+        // Add the values to the object
+        if (leagueOfLegends) {
+            allowedQuestions.push('league-of-legends');
+        }
+        if (pokemon) {
+            allowedQuestions.push('pokemon');
+        }
+        if (anime) {
+            allowedQuestions.push('anime');
+        }
+        // Store in cookies
+        document.cookie = 'allowedQuestions=' + JSON.stringify(allowedQuestions);
+    }
+</script>
+</body>
+</html>

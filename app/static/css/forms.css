@@ -94,6 +94,7 @@
     width: 400px;
     margin: 0 auto;
     border: 1px solid #dae1e7;
+    margin-bottom: 1rem;
 }
 
 .progress-bar__progress {
@@ -178,4 +179,10 @@
 .test {
     max-height: 70vh;
     height: 70vh;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

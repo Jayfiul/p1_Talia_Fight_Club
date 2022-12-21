@@ -1,36 +1,42 @@
 [
   {
-    "question": "What profession would you prefer your significant other to have?",
+    "type": "league-of-legends",
+    "question": "What fantasy profession would you like to have?",
     "answers": [
-      "Fighter",
-      "Mage",
-      "Marksman",
-      "Tank",
-      "support"
+      "Adventurer",
+      "Wizard",
+      "Ranger",
+      "Paladin",
+      "Thief",
+      "Healer"
     ]
   },
   {
-    "question": "Are you into normal or slightly weird people?",
+    "type": "league-of-legends",
+    "question": "Do you like normal or slightly weird people?",
     "answers": [
       "Normal",
       "Weird"
     ]
   },
   {
-    "question": "Is your preference skinny or big people?",
+    "type": "league-of-legends",
+    "question": "Do you like skinny or big people?",
     "answers": [
       "Skinny",
       "Big"
     ]
   },
   {
+    "type": "league-of-legends",
     "question": "Do you like strong but mean or kind but weak people?",
     "answers": [
-      "Strong but mean",
-      "Kind but weak"
+      "Strong & Mean",
+      "Kind & Weak"
     ]
   },
   {
+    "type": "pokemon",
     "question": "What is your favorite color?",
     "answers": [
       "black",
@@ -46,6 +52,7 @@
     ]
   },
   {
+    "type": "pokemon",
     "question": "What is your favorite element?",
     "answers": [
       "normal",
@@ -69,7 +76,8 @@
     ]
   },
   {
-    "question": "What is your favorite shape in a person?",
+    "type": "pokemon",
+    "question": "What is your favorite shape?",
     "answers": [
       "ball",
       "squiggle",
@@ -85,6 +93,7 @@
     ]
   },
   {
+    "type": "pokemon",
     "question": "What is your preference in weight?",
     "answers": [
       "Heavy",
@@ -92,11 +101,21 @@
     ]
   },
   {
+    "type": "pokemon",
     "question": "What is your preference in height?",
     "answers": [
       "Tall",
       "Medium",
       "Short"
+    ]
+  },
+  {
+    "type": "anime",
+    "question": "What gender do you align with?",
+    "answers": [
+      "Male",
+      "Female",
+      "Either"
     ]
   }
 ]

@@ -15,7 +15,7 @@ register_bp = Blueprint('register', __name__)
 def register(*args, **kwargs):
     # If the user is already logged in, redirect them to the home page
     if 'username' in session:
-        return redirect(url_for('home'))
+        return redirect('/')
 
     # If it's a POST request, the user is trying to sign up
     if request.method == 'POST':
