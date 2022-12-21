@@ -33,5 +33,4 @@ class AnimeAPI:
             if char["gender"] == pref:
                 char_list.append(char["name"])
         return char_list
-    print(anime_ids(["attack on titan"]))
 
