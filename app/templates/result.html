@@ -7,29 +7,46 @@
 
 </head>
 
-<body class="landing">
-Made by Talia Fight Club (Sponsored by Yusha)
+<body class="result">
 
 <div>
         {% include('partials/_navbar.html') %}
+</div>
 
-    <h1 id="welcome">
-        ;)
-    </h1>
+<div class="container-fluid">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
 
-    <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h1 id = "welcome" class = "my-5">
+            Why do you want a Waifu?
+          </h1>
+        </div>
       </div>
+
+      <div class = "row">
+            <div class = "card text-black">
+                <div class="card-body">
+                    <h3 class="card-title">;)</h3>
+                    
+                    
+
+                </div>
+
+            </div>
+      </div>
+
+      <div class = "row">
+        <form action='/' method = "GET">
+            <button type="submit" class = "btn btn-outline-success mx-2">Back to Home</button>
+        </form>
+      </div>
+
+
     </div>
-</div>
+  </div>
 
-<div>
-    <form action='/' method = "GET">
-        <button type="submit" class = "button">Back to Home</button>
-    </form>
-</div>
 
+{% include('partials/_footer.html') %}
 </body>
 </html>
