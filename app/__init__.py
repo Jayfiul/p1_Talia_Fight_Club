@@ -39,7 +39,8 @@ app.secret_key = b64.base64_encode(
 league_characters = lol_api.LOLApi()
 poke_api = poke_api.PokeApi()
 poke_api.get_all_pokemon()
-poke_api.get_all_pokemon_species()
+
+
 
 @app.before_request
 def before_request():
