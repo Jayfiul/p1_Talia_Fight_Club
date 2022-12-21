@@ -32,9 +32,13 @@
 
 <script>
     // Load cookie
-    var allowedQuestions = document.cookie.split(';').filter(function(item) {
-        return item.indexOf('allowedQuestions') >= 0
-    })[0].split('=')[1];
+    try {
+    	var allowedQuestions = document.cookie.split(';').filter(function(item) {
+        	return item.indexOf('allowedQuestions') >= 0
+    	})[0].split('=')[1];
+    } catch (err) {
+	document.cookie = 'allowedQuestions=["league-of-legends","pokemon","anime"]';
+    }
     // Parse JSON
     allowedQuestions = JSON.parse(allowedQuestions);
     // Set checkboxes
