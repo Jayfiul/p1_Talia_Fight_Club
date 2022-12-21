@@ -1,7 +1,8 @@
 import requests
 import time
 from utils.progress_bar import ProgressBar
-import json 
+import json
+
 
 class PokeApi:
     def __init__(self):
@@ -44,9 +45,31 @@ class PokeApi:
                 new_poke_data['weight'] = full_poke_data['weight']
                 new_poke_data['types'] = full_poke_data['types']
                 new_poke_data['img'] = full_poke_data['sprites']['front_default']
+                new_poke_data['species'] = full_poke_data['species']['name']
                 self.cache[poke_name] = new_poke_data
                 return new_poke_data
             except:
+                return None
+
+    def get_poke_species_data(self, species_name, force=False):
+        if species_name in self.species_cache and not force:
+            return self.species_cache[species_name]
+        else:
+            try:
+                poke_data = requests.get(self.poke_species_url + species_name)
+                full_poke_data = poke_data.json()
+                new_poke_data = {}
+                new_poke_data['name'] = full_poke_data['name']
+                if (full_poke_data['color'] is not None):
+                    new_poke_data['color'] = {"name": full_poke_data['color']['name']}
+                if (full_poke_data['shape'] is not None):
+                    new_poke_data['shape'] = {"name": full_poke_data['shape']['name']}
+                if (full_poke_data['habitat'] is not None):
+                    new_poke_data['habitat'] = {"name": full_poke_data['habitat']['name']}
+                self.species_cache[species_name] = new_poke_data
+                return new_poke_data
+            except Exception as e:
+                print(e)
                 return None
 
     def get_all_pokemon(self):
@@ -56,24 +79,13 @@ class PokeApi:
         for poke in self.poke_list:
             pokemon.append(self.get_pokemon(poke['name']))
             progress += 1
-            load_progress.update(progress, 'Loaded pokemon: ' + poke['name'] + " (" + str(progress) + "/" + str(len(self.poke_list)) + ")")
+            load_progress.update(progress, 'Loaded pokemon: ' + poke['name'] + " (" + str(progress) + "/" + str(
+                len(self.poke_list)) + ")")
             if progress % 50 == 0:
                 self.save_cache()
-                load_progress.update(progress, 'Saved cache: ' + poke['name'] + " (" + str(progress) + "/" + str(len(self.poke_list)) + ")")
-        load_progress.finish("Loaded all pokemon")
-        return pokemon
-
-    def get_all_pokemon_species(self):
-        pokemon = []
-        load_progress = ProgressBar(len(self.poke_species))
-        progress = 0
-        for poke in self.poke_species:
-            pokemon.append(self.get_pokemon_species(poke['name']))
-            progress += 1
-            load_progress.update(progress, 'Loaded pokemon species: ' + poke['name'] + " (" + str(progress) + "/" + str(len(self.poke_species)) + ")")
-            if progress % 50 == 0:
-                self.save_cache()
-                load_progress.update(progress, 'Saved cache: ' + poke['name'] + " (" + str(progress) + "/" + str(len(self.poke_species)) + ")")
+                load_progress.update(progress, 'Saved cache: ' + poke['name'] + " (" + str(progress) + "/" + str(
+                    len(self.poke_list)) + ")")
+        self.save_cache()
         load_progress.finish("Loaded all pokemon")
         return pokemon
 
@@ -90,37 +102,26 @@ class PokeApi:
             self.cache = data['pokemon']
             self.species_cache = data['species']
 
-    def get_poke_species_data(self, species_name, force=False):
-        if species_name in self.species_cache and not force:
-            return self.species_cache[species_name]
-        else:
-            try:
-                poke_data = requests.get(self.poke_species_url + species_name)
-                full_poke_data = poke_data.json()
-                new_poke_data = {}
-                new_poke_data['name'] = full_poke_data['name']
-                new_poke_data['color'] = full_poke_data['color']
-                new_poke_data['shape'] = full_poke_data['shape']
-                new_poke_data['habitat'] = full_poke_data['habitat']['name']
-                self.species_cache[species_name] = new_poke_data
-                return new_poke_data
-            except:
-                return None
-
     def get_poke_color(self, poke_name):
-        if self.get_poke_species_data(poke_name) is None:
+        if self.get_poke_species_data(self.get_poke_data(poke_name)['species']) is None:
             return None
-        return self.get_poke_species_data(poke_name)['color']['name']
+        return self.get_poke_species_data(self.get_poke_data(poke_name)['species'])['color']['name']
 
     def get_poke_shape(self, poke_name):
-        if self.get_poke_species_data(poke_name) is None:
+        if self.get_poke_species_data(self.get_poke_data(poke_name)['species']) is None:
             return None
-        return self.get_poke_species_data(poke_name)['shape']['name']
+        try:
+            return self.get_poke_species_data(self.get_poke_data(poke_name)['species'])['shape']['name']
+        except:
+            return None
 
     def get_poke_habitat(self, poke_name):
-        if self.get_poke_species_data(poke_name) is None:
+        if self.get_poke_species_data(self.get_poke_data(poke_name)['species']) is None:
             return None
-        return self.get_poke_species_data(poke_name)['habitat']['name']
+        try:
+            return self.get_poke_species_data(self.get_poke_data(poke_name)['species'])['habitat']['name']
+        except:
+            return None
 
     def get_poke_weight(self, poke_name):
         if self.get_poke_data(poke_name)['weight'] > 100:

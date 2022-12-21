@@ -1,0 +1,181 @@
+.button {
+    /* Create a nice looking button that looks like a Tailwind button */
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin: 0.5rem;
+}
+
+.button:hover {
+    /* Make the button look like it's being pressed */
+    transform: translateY(-1px);
+}
+
+.button:active {
+    /* Make the button look like it's being pressed */
+    transform: translateY(2px);
+}
+
+.button-primary {
+    /* Make the button look like a Tailwind button */
+    background-color: #3490dc;
+    border-color: #3490dc;
+    color: #fff;
+}
+
+.button-primary:hover {
+    /* Make the button look like it's being pressed */
+    background-color: #2779bd;
+    border-color: #2779bd;
+}
+
+.button-secondary {
+    /* Make the button look like a Tailwind button (gray) */
+    background-color: #dae1e7;
+    border-color: #dae1e7;
+    color: #4a5568;
+}
+
+.button-secondary:hover {
+    /* Make the button look like it's being pressed */
+    background-color: #c6d1d9;
+    border-color: #c6d1d9;
+}
+
+.button-danger {
+    /* Make the button look like a Tailwind button */
+    background-color: #e3342f;
+    border-color: #e3342f;
+    color: #fff;
+}
+
+.button-danger:hover {
+    /* Make the button look like it's being pressed */
+    background-color: #cc1f1a;
+    border-color: #cc1f1a;
+}
+
+.button-warning {
+    /* Make the button look like a Tailwind button */
+    background-color: #f6993f;
+    border-color: #f6993f;
+    color: #fff;
+}
+
+.button-warning:hover {
+    /* Make the button look like it's being pressed */
+    background-color: #dd6b20;
+    border-color: #dd6b20;
+}
+
+.button-success {
+    /* Make the button look like a Tailwind button */
+    background-color: #38c172;
+    border-color: #38c172;
+    color: #fff;
+}
+
+.button-success:hover {
+    /* Make the button look like it's being pressed */
+    background-color: #2f855a;
+    border-color: #2f855a;
+}
+
+.progress-bar {
+    /* Create a nice looking progress bar */
+    height: 1rem;
+    border-radius: 0.25rem;
+    background-color: #dae1e7;
+    overflow: hidden;
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid #dae1e7;
+}
+
+.progress-bar__progress {
+    /* Create a nice looking progress bar */
+    height: 100%;
+    background-color: #38c172;
+    transition: width 0.6s ease;
+}
+
+.button-icon {
+    /* Create a nice looking button that looks like a Tailwind button */
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 1em;
+    height: 1em;
+    font-size: 2rem;
+}
+
+.answer {
+    /* Create a nice looking answer */
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    text-align: left;
+}
+
+.answer:before {
+    /* Create a nice looking answer */
+    content: "» ";
+}
+
+.fade-in {
+    /* Create a nice looking fade in animation */
+    animation: fade-in 0.25s ease-in;
+}
+
+.fade-out {
+    /* Create a nice looking fade out animation */
+    animation: fade-out 0.25s ease-out;
+}
+
+@keyframes fade-in {
+    /* Create a nice looking fade in animation */
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    /* Create a nice looking fade out animation */
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.selected {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.test {
+    max-height: 70vh;
+    height: 70vh;
+}

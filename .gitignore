@@ -25,3 +25,9 @@ __pycache__/
 .pytest_cache
 .coverage
 .coverage.*
+
+.idea
+
+node_modules
+
+.js

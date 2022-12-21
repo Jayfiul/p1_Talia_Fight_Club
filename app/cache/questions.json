@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What profession would you prefer your significant other to have?",
+    "answers": [
+      "Fighter",
+      "Mage",
+      "Marksman",
+      "Tank",
+      "support"
+    ]
+  },
+  {
+    "question": "Are you into normal or slightly weird people?",
+    "answers": [
+      "Normal",
+      "Weird"
+    ]
+  },
+  {
+    "question": "Is your preference skinny or big people?",
+    "answers": [
+      "Skinny",
+      "Big"
+    ]
+  },
+  {
+    "question": "Do you like strong but mean or kind but weak people?",
+    "answers": [
+      "Strong but mean",
+      "Kind but weak"
+    ]
+  },
+  {
+    "question": "What is your favorite color?",
+    "answers": [
+      "black",
+      "blue",
+      "brown",
+      "gray",
+      "green",
+      "pink",
+      "purple",
+      "red",
+      "white",
+      "yellow"
+    ]
+  },
+  {
+    "question": "What is your favorite element?",
+    "answers": [
+      "normal",
+      "fighting",
+      "flying",
+      "poison",
+      "ground",
+      "rock",
+      "bug",
+      "ghost",
+      "steel",
+      "fire",
+      "water",
+      "grass",
+      "electric",
+      "psychic",
+      "ice",
+      "dragon",
+      "dark",
+      "fairy"
+    ]
+  },
+  {
+    "question": "What is your favorite shape in a person?",
+    "answers": [
+      "ball",
+      "squiggle",
+      "fish",
+      "arms",
+      "blobs",
+      "upright",
+      "legs",
+      "quadruped",
+      "wings",
+      "tentacles",
+      "humanoid"
+    ]
+  },
+  {
+    "question": "What is your preference in weight?",
+    "answers": [
+      "Heavy",
+      "Light"
+    ]
+  },
+  {
+    "question": "What is your preference in height?",
+    "answers": [
+      "Tall",
+      "Medium",
+      "Short"
+    ]
+  }
+]

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% set page_title = 'Test' %}
+    {% set page_description = 'Get to know your anime partner' %}
+    {% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
+</head>
+
+<body class="landing">
+{% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
+
+<!-- Test header -->
+<header id="header">
+    <div class="inner">
+        <h1>Personality Quiz</h1>
+        <p>Get to know your anime partner</p>
+    </div>
+</header>
+
+<!-- Test -->
+<section id="test-section">
+    <!-- This will be handled with JavaScript, only seed the elements -->
+    <div class="inner">
+        <div class="progress-bar" id="progress-bar">
+            <div class="progress-bar__progress" id="progress-bar__progress" style="width: 0px"></div>
+        </div>
+        <div class="container test" id="test">
+            <div class="question" id="question-div">
+                <h2 id="question">Loading...</h2>
+            </div>
+            <div class="answers" id="answers-div">
+                <!-- JavaScript will fill this in -->
+            </div>
+        </div>
+        <!-- Center the buttons -->
+        <div class="controls center">
+            <button class="button button-danger" id="clear-button" onclick="clearAnswers()" data-bs-toggle="tooltip" data-bs-title="Clear all answers">
+                <!-- Bootstrap icon -->
+                <i class="bi bi-x button-icon"></i>
+            </button>
+            <button class="button button-warning" id="previous-button" onclick="previousQuestion()" data-bs-toggle="tooltip" data-bs-title="Go to previous question">
+                <!-- Bootstrap icon -->
+                <i class="bi bi-arrow-left button-icon"></i>
+            </button>
+            <button class="button button-primary" id="next-button" onclick="nextQuestion()" data-bs-toggle="tooltip" data-bs-title="Go to next question">
+                <!-- Bootstrap icon -->
+                <i class="bi bi-arrow-right button-icon"></i>
+            </button>
+            <button class="button button-success" id="submit-button" onclick="submitQuiz()" data-bs-toggle="tooltip" data-bs-title="Submit quiz">
+                <!-- Bootstrap icon -->
+                <i class="bi bi-check button-icon"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts -->
+<script>
+    // Initialize tooltips
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    let sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    var questions = {{ questions|tojson }};
+    var currentQuestion = 0;
+    var answers = [];
+
+    let lastPage = `
+    <p>Thank you for taking the quiz! Ready to see your results? Press the green button below to see your results!</p>
+    `
+
+    let test = document.getElementById('test');
+    // Get the question div
+    var questionDiv = document.getElementById("question-div");
+    // Get the question text
+    var questionText = document.getElementById("question");
+    // Get the answers div
+    var answersDiv = document.getElementById("answers-div");
+
+    // Function to load question
+    // Utilize Bootstrap to make it look nice
+    async function loadQuestion() {
+        // Fade out the question
+        test.classList.add("fade-out");
+        // Wait for the fade out animation to finish
+        await sleep(250);
+        // Fade in the question
+        test.classList.remove("fade-out");
+        test.classList.add("fade-in");
+        // Get the current question
+        var question = questions[currentQuestion];
+        // Set the question text
+        questionText.innerHTML = question.question;
+        // Clear the answers div
+        answersDiv.innerHTML = "";
+        // Loop through the answers
+        for (var i = 0; i < question.answers.length; i++) {
+            // Create a div for each answer so each div is displayed on a new line
+            var answerDiv = document.createElement("div");
+            // Classname
+            answerDiv.className = "answer";
+            // On click, set the answer
+            answerDiv.onclick = async function () {
+                // Set all the answers to not selected
+                var answerDivs = document.getElementsByClassName("answer");
+                for (var i = 0; i < answerDivs.length; i++) {
+                    answerDivs[i].classList.remove("selected");
+                }
+                // Flash the answer by changing the background color to green
+                this.classList.add("selected");
+                // Set the answer
+                answers[currentQuestion] = this.innerHTML;
+                // Wait 1000ms
+                await sleep(1000);
+                // Next question
+                nextQuestion();
+            };
+            // If this answer is the answer the user selected, set the background color to
+            // green
+            if (answers[currentQuestion] === question.answers[i]) {
+                answerDiv.classList.add("selected");
+            }
+            // Add the answer text
+            answerDiv.innerHTML = question.answers[i];
+            // Add the answer div to the answers div
+            answersDiv.appendChild(answerDiv);
+        }
+
+        // Update the progress bar
+        updateProgressBar();
+    }
+
+    function updateProgressBar(progress = null) {
+        // Get the progress bar
+        if (progress === null) {
+            var progressBar = document.getElementById("progress-bar__progress");
+            // Calculate the progress (questions answered / total questions)
+            var progress = ((currentQuestion + 1) / (questions.length + 1)) * 100;
+            // Set the progress bar width
+            progressBar.style.width = progress + "%";
+        } else {
+            var progressBar = document.getElementById("progress-bar__progress");
+            progressBar.style.width = progress + "%";
+        }
+    }
+
+    function loadLastPage() {
+        // Fade out the question
+        test.classList.add("fade-out");
+        // Wait for the fade out animation to finish
+        sleep(250).then(() => {
+            // Fade in the question
+            test.classList.remove("fade-out");
+            test.classList.add("fade-in");
+            // Set the question text
+            questionText.innerHTML = "Results";
+            // Clear the answers div
+            answersDiv.innerHTML = lastPage;
+            // Update the progress bar
+            updateProgressBar(100);
+        });
+    }
+
+    // Function to load next question
+    function nextQuestion() {
+        // Increment the current question if there are more questions
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            loadQuestion();
+        } else {
+            // If there are no more questions, load the last page
+            loadLastPage();
+        }
+    }
+
+    // Function to load previous question
+    function previousQuestion() {
+        // Decrease the current question if there are more questions
+        if (currentQuestion > 1) {
+            currentQuestion--;
+            loadQuestion();
+        }
+    }
+
+    // Function to submit the quiz
+    function submitQuiz() {
+        // Submit the answers
+        submitAnswers();
+    }
+
+    // Function to submit the answers by POSTing the array to the server
+    function submitAnswers() {
+        // Create a new form
+        var form = document.createElement("form");
+        // Set the form method
+        form.method = "POST";
+        // Set the form action
+        form.action = "/test2";
+        // Create a new input for the answers
+        var input = document.createElement("input");
+        // Set the input name
+        input.name = "answers";
+        // Set the input value
+        input.value = JSON.stringify(answers);
+        // Add the input to the form
+        form.appendChild(input);
+        // Add the form to the body
+        document.body.appendChild(form);
+        // Submit the form
+        form.submit();
+    }
+
+    // Handle clearing the answers
+    function clearAnswers() {
+        // Clear the answers array
+        answers = [];
+        // Reset the current question
+        currentQuestion = 0;
+        // Load the first question
+        loadQuestion();
+    }
+
+    // Load the first question
+    loadQuestion();
+</script>
+
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

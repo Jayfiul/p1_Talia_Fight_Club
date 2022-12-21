@@ -15,8 +15,7 @@ def create_table(db) -> None:
                    "id INTEGER PRIMARY KEY, " +
                    "universe TEXT" +
                    "question TEXT, " +
-                   "choices TEXT, " +
-                   "weights TEXT)")
+                   "choices TEXT)")
     db.conn.commit()
 
 def insert(db, universe, question, choices) -> None:

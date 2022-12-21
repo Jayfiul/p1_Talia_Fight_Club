@@ -15,6 +15,7 @@ from routes.logout import logout_bp
 from routes.register import register_bp
 from routes.result import result_bp
 from routes.test import test_bp
+from routes.test2 import test2_bp
 from utils import b64
 
 from utils import lol_api
@@ -31,6 +32,7 @@ app.register_blueprint(login_bp)
 app.register_blueprint(logout_bp)
 app.register_blueprint(register_bp)
 app.register_blueprint(test_bp)
+app.register_blueprint(test2_bp)
 app.register_blueprint(result_bp)
 
 app.secret_key = b64.base64_encode(
