@@ -12,8 +12,7 @@ def create_table(db) -> None:
     Returns:
         None
     """
-    db.cur.execute("CREATE TABLE IF NOT EXISTS pokemon (" +
-                   "id INTEGER PRIMARY KEY, " +
+    db.cur.execute("CREATE TABLE IF NOT EXISTS league (" +
                    "name TEXT, " +
                    "attributes TEXT, " +
                    "weird TEXT, " +
@@ -26,7 +25,7 @@ def create_table(db) -> None:
 
 def insert(db, name, attributes, weird, weight, strength, image) -> None:
     
-    db.cur.execute("INSERT INTO users VALUES " +
-                   "(NULL, ?, ?, ?, ?)",
+    db.cur.execute("INSERT INTO league VALUES " +
+                   "(?, ?, ?, ?, ?, ?)",
                    (name, attributes, weird, weight, strength, image))
     db.conn.commit()

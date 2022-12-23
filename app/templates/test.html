@@ -9,16 +9,8 @@
 <body class="landing">
 {% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
 
-<!-- Test header -->
-<header id="header">
-    <div class="inner">
-        <h1>Personality Quiz</h1>
-        <p>Get to know your anime partner</p>
-    </div>
-</header>
-
 <!-- Test -->
-<section id="test-section">
+<section id="test-section" style="margin-top: 2em">
     <!-- This will be handled with JavaScript, only seed the elements -->
     <div class="inner">
         <div class="progress-bar" id="progress-bar">
@@ -199,7 +191,7 @@
         // Set the form method
         form.method = "POST";
         // Set the form action
-        form.action = "/test";
+        form.action = "/result";
         // Create a new input for the answers
         var input = document.createElement("input");
         // Set the input name

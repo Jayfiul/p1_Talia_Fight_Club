@@ -58,6 +58,8 @@ def get_user(db, username) -> list:
     db.cur.execute("SELECT * FROM users WHERE username=?", (username,))
     return db.cur.fetchall()
 
+# def get_user_choice_by_category(db, username, category: str)
+
 
 def get_user_by_id(db, target_id) -> list:
     """

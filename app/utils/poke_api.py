@@ -2,10 +2,11 @@ import requests
 import time
 from utils.progress_bar import ProgressBar
 import json
+from database import pokemon
 
 
 class PokeApi:
-    def __init__(self):
+    def __init__(self, db):
         self.poke_species_url = 'https://pokeapi.co/api/v2/pokemon-species/'
         self.poke_url = 'https://pokeapi.co/api/v2/pokemon/'
         self.poke_species = self.get_poke_species_list()
@@ -18,6 +19,11 @@ class PokeApi:
             self.load_cache()
         except:
             pass
+
+        self.get_all_pokemon()
+        for poke in self.poke_list:
+            attr = self.get_pokemon(poke['name'])
+            pokemon.insert(db, attr[0], attr[1], attr[2], attr[3], ",".join(attr[4]), attr[5], attr[6])
 
     def get_poke_species_list(self):
         response = requests.get(self.poke_species_url)
@@ -73,11 +79,11 @@ class PokeApi:
                 return None
 
     def get_all_pokemon(self):
-        pokemon = []
+        # pokemon = []
         load_progress = ProgressBar(len(self.poke_list))
         progress = 0
         for poke in self.poke_list:
-            pokemon.append(self.get_pokemon(poke['name']))
+            # pokemon.append(self.get_pokemon(poke['name']))
             progress += 1
             load_progress.update(progress, 'Loaded pokemon: ' + poke['name'] + " (" + str(progress) + "/" + str(
                 len(self.poke_list)) + ")")
@@ -87,7 +93,7 @@ class PokeApi:
                     len(self.poke_list)) + ")")
         self.save_cache()
         load_progress.finish("Loaded all pokemon")
-        return pokemon
+        # return pokemon
 
     def save_cache(self):
         obj = {}
@@ -115,13 +121,13 @@ class PokeApi:
         except:
             return None
 
-    def get_poke_habitat(self, poke_name):
-        if self.get_poke_species_data(self.get_poke_data(poke_name)['species']) is None:
-            return None
-        try:
-            return self.get_poke_species_data(self.get_poke_data(poke_name)['species'])['habitat']['name']
-        except:
-            return None
+    # def get_poke_habitat(self, poke_name):
+    #     if self.get_poke_species_data(self.get_poke_data(poke_name)['species']) is None:
+    #         return None
+    #     try:
+    #         return self.get_poke_species_data(self.get_poke_data(poke_name)['species'])['habitat']['name']
+    #     except:
+    #         return None
 
     def get_poke_weight(self, poke_name):
         if self.get_poke_data(poke_name)['weight'] > 100:
@@ -142,10 +148,10 @@ class PokeApi:
 
     def get_pokemon(self, poke_name):
         if self.get_poke_data(poke_name) is None:
+            print("returning none whoop whoop")
             return None
         pokemon = []
         pokemon.append(poke_name)
-        pokemon.append(self.get_poke_data(poke_name)['id'])
         pokemon.append(self.get_poke_color(poke_name))
         pokemon.append(self.get_poke_shape(poke_name))
         pokemon.append(self.get_poke_weight(poke_name))

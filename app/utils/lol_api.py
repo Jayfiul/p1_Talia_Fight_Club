@@ -1,10 +1,16 @@
 import requests
 
+from database import league
+
 
 class LOLApi:
-    def __init__(self):
+    def __init__(self, db):
         self.champion_url = 'http://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_US/champion.json'
         self.champion_list = self.get_champion_list()
+
+        for champion in self.champion_list:
+            attr = self.get_champion(champion)
+            league.insert(db, attr[0], ",".join(attr[1]), attr[2], attr[3], attr[4], attr[5])
 
     def get_champion_list(self):
         response = requests.get(self.champion_url)
@@ -13,7 +19,7 @@ class LOLApi:
     def get_champion_data(self, champion_name):
         return self.champion_list[champion_name]
 
-    def attributes(self, champion_name):
+    def attributes(self, champion_name): # in conjunction with ",".join(); also viable as a string output
         tags = self.get_champion_data(champion_name)['tags']
         translations = ["Fighter,Adventurer",
                         "Mage,Wizard",
@@ -23,8 +29,8 @@ class LOLApi:
                         "Support,Healer"]
         new_tags=[]
         for t in translations:
-            one = t.split[0]
-            two = t.split[1]
+            one = t.split(",")[0]
+            two = t.split(",")[1]
             if one in tags:
                 new_tags.append(two)
         return new_tags
@@ -48,8 +54,8 @@ class LOLApi:
         attack_damage = self.get_champion_data(champion_name)['stats']['attackdamage']
         attack_damage_per_level = self.get_champion_data(champion_name)['stats']['attackdamageperlevel']
         if attack_damage > 55 and attack_damage_per_level > 3:
-            return 'Strong'
-        return 'Kind'
+            return 'Strong and Mean'
+        return 'Kind and Weak'
 
     def get_champion_image(self, champion_name):
         champion = self.get_champion_data(champion_name)

@@ -19,20 +19,19 @@
         <div class="col">
 
           <h1 id = "welcome" class = "my-5">
-            Why do you want a Waifu?
+            Finally, your results!
           </h1>
         </div>
       </div>
 
       <div class = "row">
             <div class = "card text-black">
+              {% for char in imgs %}
                 <div class="card-body">
-                    <h3 class="card-title">;)</h3>
-                    
-                    
-
+                  <img class="card-img-top" style="width: 18rem;" src= {{ imgs[char] }}>
+                  <h3 class="card-title">{{ char }}</h3>
                 </div>
-
+              {% endfor %}
             </div>
       </div>
 
