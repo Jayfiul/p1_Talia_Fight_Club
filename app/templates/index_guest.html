@@ -5,73 +5,49 @@
     {% set page_description = 'The homepage of our mindblowing, incredibly accurate personality test.' %}
     {% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
     
-</head>
-
-<body class="landing">
-    {% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
-
-    Made by Talia Fight Club (Sponsored by Yusha)
-
-<div>
-    <h1 i<!DOCTYPE html>
-        <html>
-        <head>
-            {% set page_title = 'Home' %}
-            {% set page_description = 'The homepage of our mindblowing, incredibly accurate personality test.' %}
-            {% include('partials/_head.html', {'page_title': page_title, 'page_description': page_description}) %}
-            
-        </head>
+</head>       
+    <body class="bg-success bg-gradient text-white">
+        {% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
+    
         
-        <body class="bg-success bg-gradient text-white">
-            {% include('partials/_navbar.html', {'is_logged_in': is_logged_in}) %}
-        
-            
-        
-            <div class="container-fluid">
-                <div class="container text-center">
-                  <div class="row">
-                    <div class="col">
-        
-                      <h1 id = "welcome" class = "my-5">
-                        The Place to Find Your Dream Waifu
-                      </h1>
-                    </div>
-                  </div>
-        
-                  <div class = "row">
-                        <div class = "card text-black">
-                            <div class="card-body">
-                                <h3 class="card-title">Signup or Login to Continue!</h3>
-                                
-                                <div class = "row">
-                                    <div class = "col">
-                                        <a href="/register" class = "btn btn-outline-success">Register</a>
-                                    </div>
-        
-                                    <div class = "col">
-                                        <a href="/login" class = "btn btn-outline-success">Login</a>
-                                    </div>
+    
+        <div class="container-fluid">
+            <div class="container text-center">
+                <div class="row">
+                <div class="col">
+    
+                    <h1 id = "welcome" class = "my-5">
+                    The Place to Find Your Dream Waifu
+                    </h1>
+                </div>
+                </div>
+    
+                <div class = "row">
+                    <div class = "card text-black">
+                        <div class="card-body">
+                            <h3 class="card-title">Signup or Login to Continue!</h3>
+                            
+                            <div class = "row">
+                                <div class = "col">
+                                    <a href="/register" class = "btn btn-outline-success">Register</a>
+                                </div>
+    
+                                <div class = "col">
+                                    <a href="/login" class = "btn btn-outline-success">Login</a>
                                 </div>
                             </div>
-            
                         </div>
-                  </div>
         
-        
+                    </div>
                 </div>
-              </div>
-        
-        
-        {% include('partials/_footer.html') %}
-        </body>
-        </html>
-        d="welcome">
-        Welcome, guest!
-    </h1>
-</div>
-<h3>
-    Please login or register to continue.
-</h3>
+    
+    
+            </div>
+            </div>
+    
+    
+    {% include('partials/_footer.html') %}
+    
 
-</body>
+    </body>
 </html>
