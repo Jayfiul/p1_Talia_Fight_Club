@@ -216,3 +216,25 @@ Fixed some major bugs in the API code
 Started the process of adding the API to the databses
 Updated the documents 
 ==============================================================
+
+yushaA, anthonyS, taliaH, williamV -- 2022-12-20 18:30
+--------------------------------------------------------------
+Fix bugs
+Implement Poke cache speedup
+Update questions
+Build frontend
+Finalize API content
+Simplify __init__.py
+==============================================================
+
+anthonyS -- 2022-12-23 0:00
+--------------------------------------------------------------
+Fix nonetype bugs
+Add API data to DB on obj creation through constructor
+Finalize routing
+Create best_match
+Simplify poke_api, lol_api
+Write MVP front end
+Upload MVP, everything runs
+
+==============================================================
