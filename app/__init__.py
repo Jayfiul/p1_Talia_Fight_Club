@@ -56,10 +56,19 @@ def before_request():
     request.db = db
 
 if __name__ == "__main__":  # false if this file imported as module
-    # enable debugging, auto-restarting of server when this file is modified
-    app.debug = True
-    app.run(
-        # Comment out on production run
-        host="0.0.0.0",
-        port=5001,
-    )
+    try:
+        # enable debugging, auto-restarting of server when this file is modified
+        app.debug = True
+        app.run(
+            # Comment out on production run
+            host="0.0.0.0",
+            port=5000,
+        )
+    except:
+        # enable debugging, auto-restarting of server when this file is modified
+        app.debug = True
+        app.run(
+            # Comment out on production run
+            host="0.0.0.0",
+            port=5001,
+        )
