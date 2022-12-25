@@ -16,7 +16,7 @@ This project aims to create a website where the user is able to find a partner m
 ### Launch Codes
 1. Clone the repo (or download the zip)
 2. Open the terminal and cd into the directory
-3. Install the dependencies with `pip install -r requirements.txt` (or manually install them with `pip install flask flask_session requests fuckit`)
-4. Run the app with `python app.py` (or `python3 app.py` if you have both python2 and python3 installed)
+3. Install the dependencies with `pip install -r requirements.txt` (or manually install them with `pip install flask flask_session requests`)
+4. Run the app with `python __init__.py` (or `python3 __init__.py` if you have both python2 and python3 installed)
 5. Open your browser and go to `localhost:5000` (or your network's IP address on port 5000)
 6. Enjoy!
